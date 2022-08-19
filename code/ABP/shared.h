@@ -4,44 +4,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 typedef struct Alimento
 {
-    char *name;
+    char name[100];
     int caloriesPer100Grams;
 }Alimento;
 
 typedef struct Ingerido
 {
-    char *name;
+    char name[100];
     int quantityInGrams;
 }Ingerido;
 
-float caloriasIngeridas(Alimento Alimento, Ingerido ingerido)
-{   
-    return (Alimento.caloriesPer100Grams/100) * ingerido.quantityInGrams;
-}
-
-int getAlimento(Alimento *Alimento, FILE *file)
+typedef struct Statistics
 {
-    if (Alimento == NULL||file == NULL)
-    {
-        return -1;
-    }
+    char name[100];
+    int numNodes;
+    int height;
+    int rotations;
+    int comparasions;
+} Statistics;
 
-    char *temp = (char *)malloc(sizeof(char) * 100);
-    
-    if(fgets(temp, 100, file) != NULL)
-    {
-        free(temp);
-        return 1;        
-    }
+typedef struct Counter
+{
+    Statistics ABP;
+    Statistics AVL;
+    Statistics RN;
+    Statistics Splay;
+} Counter;
 
-    Alimento->name = strtok(temp, ";");
-    Alimento->caloriesPer100Grams = atoi(strtok(NULL, ";"));
+void outputStart(int argc, char *argv[], FILE **outputFile, FILE **day, FILE **food, Counter *counter, int *totalCals);
 
-    free(temp);
-    return 0;
-}
+void outputEnd(FILE **outputFile, FILE **day, FILE **food, Counter counter, int totalCals);
+
+float caloriasIngeridas(Alimento Alimento, Ingerido ingerido);
+
+int getAlimento(Alimento *alimento, FILE *file);
+
+int getIngerido(Ingerido *ingerido, FILE *file);
+
+char *getOutputString(Alimento alimento, Ingerido ingerido);
+
+int outputToFile(char *output, FILE *file);
+
+char *printStatistics(Statistics stats);
+
+int startOutputFile(FILE *file, char *argv[]);
+
+int finishOutputFile(FILE *file, Counter counter, int totalCals);
+
+Counter initCounter();
 
 #endif
