@@ -9,44 +9,44 @@
 // Structs para as estatisticas de saida
 typedef struct Statistics
 {
-    char name[100];
-    int numNodes;
-    int height;
-    int rotations;
-    int comparasions;
+    char name[100]; // Nome da arvire
+    int numNodes; // Numero de nos da arvore
+    int height; // Altura da arvore
+    int rotations; // Numero de rotacoes da arvore
+    int comparasions; // Numero de comparacoes da arvore
 } Statistics;
 
 // Structs para conter os contadores de todas as arvores
 typedef struct Counter
 {
-    Statistics ABP;
-    Statistics AVL;
-    Statistics RN;
-    Statistics Splay;
+    Statistics ABP; // Contador para a arvore ABP
+    Statistics AVL; // Contador para a arvore AVL
+    Statistics RN; // Contador para a arvore RN
+    Statistics Splay; // Contador para a arvore Splay
 } Counter;
 
 // Structs para conter os dados do programa para passagem mais rapida
 typedef struct Outputs
 {
-    FILE *arg1Foods;
-    FILE *arg2Day;
-    FILE *arg3OutputFile;
-    Counter counter;
-    int totalCals;
+    FILE *arg1Foods; // Arquivo com os alimentos
+    FILE *arg2Day; // Arquivo com os dias
+    FILE *arg3OutputFile; // Arquivo de saida
+    Counter counter; // Contador de todas as arvores
+    int totalCals; // Total de calorias ingeridas
 } Outputs;	
 
 // Structs para conter os dados do alimento
 typedef struct Alimento
 {
-    char name[100];
-    int caloriesPer100Grams;
+    char name[100]; // Nome do alimento
+    int caloriesPer100Grams; // Calorias por 100 gramas
 }Alimento;
 
 // Structs para conter os dados do alimento
 typedef struct Ingerido
 {
-    char name[100];
-    int quantityInGrams;
+    char name[100]; // Nome do alimento
+    int quantityInGrams; // Quantidade em gramas
 }Ingerido;
 
 // Rotina que inicializa os elementos do programa

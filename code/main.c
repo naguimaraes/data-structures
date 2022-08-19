@@ -19,9 +19,9 @@
 
 int main(int argc, char *argv[])
 {
-    Outputs output;
+    Outputs output; // Cria a struct para o output
 
-    outputStart(argc, argv, &output);
+    outputStart(argc, argv, &output); // Inicia o output
 
     Alimento test;
     Ingerido test2 = {" ", 100};
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
         free(test3);
     }
 
-    outputEnd(&output);
+    outputEnd(&output); // Finaliza o output
 
     return 0;
 }
