@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["test.csv", "test2.csv", "output.txt"],
+            "args": ["1000Shuffled.csv", "day1.csv", "saida_day1.txt"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],

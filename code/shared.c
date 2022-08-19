@@ -1,6 +1,6 @@
 #include "shared.h"
 
-void outputStart(int argc, char *argv[], FILE **outputFile, FILE **day, FILE **food, Counter *counter, int *totalCals)
+void outputStart(int argc, char *argv[], Outputs *output)
 {
     if (argc != 4) 
     {
@@ -8,40 +8,40 @@ void outputStart(int argc, char *argv[], FILE **outputFile, FILE **day, FILE **f
         exit(1);
     }
 
-    *food = fopen(argv[1], "r");
-    if (food == NULL)
+    output->arg1Foods = fopen(argv[1], "r");
+    if (output->arg1Foods == NULL)
     {
         printf("Error: Food file not found.\n");
         exit(2);
     }
 
-    *day = fopen(argv[2], "r");
-    if (day == NULL)
+    output->arg2Day = fopen(argv[2], "r");
+    if (output->arg2Day == NULL)
     {
         printf("Error: Day file not found.\n");
         exit(3);
     }
 
-    *outputFile = fopen(argv[3], "w");
-    if (outputFile == NULL)
+    output->arg3OutputFile = fopen(argv[3], "w");
+    if (output->arg3OutputFile == NULL)
     {
         printf("Error: Output file not found.\n");
         exit(4);
     }
 
-    startOutputFile(*outputFile, argv);
+    startOutputFile(output->arg3OutputFile, argv);
 
-    *counter = initCounter();
-    *totalCals = 0;
+    output->counter = initCounter();
+    output->totalCals = 0;
 }
 
-void outputEnd(FILE **outputFile, FILE **day, FILE **food, Counter counter, int totalCals)
+void outputEnd(Outputs *output)
 {
-    finishOutputFile(*outputFile, counter, totalCals);
+    finishOutputFile(output->arg3OutputFile, output->counter, output->totalCals);
 
-    fclose(*food);
-    fclose(*day);
-    fclose(*outputFile);
+    fclose(output->arg1Foods);
+    fclose(output->arg2Day);
+    fclose(output->arg3OutputFile);
 }
 
 float caloriasIngeridas(Alimento Alimento, Ingerido ingerido)
@@ -97,6 +97,7 @@ int getIngerido(Ingerido *ingerido, FILE *file)
     for (int i = 0; i < strlen(ingerido->name); i++) ingerido->name[i] = tolower(ingerido->name[i]);
     ingerido->quantityInGrams = atoi(strtok(NULL, ";"));
     free(temp);
+
     return 0;
 }
 
@@ -132,9 +133,7 @@ int startOutputFile(FILE *file, char *argv[])
 
 int finishOutputFile(FILE *file, Counter counter, int totalCals)
 {
-    fprintf(file, "\n");
-
-    fprintf(file, "Total de %d calorias consumidas no dia.\n\n", totalCals);
+    fprintf(file, "\nTotal de %d calorias consumidas no dia.\n\n", totalCals);
 
     char *output = printStatistics(counter.ABP);
     fprintf(file, "%s\n", output);
