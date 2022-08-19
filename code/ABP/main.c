@@ -11,30 +11,27 @@
 #include <limits.h>
 
 #include "shared.h"
-#include "ABP.h"
 
-
-int main(int agrc, char *argv[])
+int main(int argc, char *argv[])
 {
-    if (agrc != 3)
-    {
-        printf("Usage: <Programa>  <Calorias> <AlimentosIngeridos> <Arquivo de saida>\n");
-        return 1;
-    }
+    FILE *outputFile, *day, *food;
+    Counter counter;
+    int totalCals = 0;
+
+    outputStart(argc, argv, &outputFile, &day, &food, &counter, &totalCals);
 
     Alimento test;
-    FILE *file = fopen(argv[0], "r");
-    if (file == NULL)
+    Ingerido test2 = {" ", 100};
+    while (!getAlimento(&test, food))
     {
-        printf("Erro ao abrir arquivo de alimentos\n");
-        return 1;
+        char *test3 = getOutputString(test, test2);
+        outputToFile(test3, outputFile);
+        free(test3);
     }
-    getAlimento(&test, file);
-    printf("%s\n%d\n", test.name, test.caloriesPer100Grams);
-    fclose(file);
 
-    int ABP = 0, AVL = 0, RN = 0, Splay = 0;
-
+    outputEnd(&outputFile, &day, &food, counter, totalCals);
 
     return 0;
+
+    
 }
