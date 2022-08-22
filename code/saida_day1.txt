@@ -1,34 +1,29 @@
-Calorias caluladas para day1.csv usando a tabela 1000Shuffled.csv.
+Calorias calculadas para day1.csv usando 1000shuffled.csv.
 
-100g de muesli (336 calorias por 100g) = 336 calorias
+150g de activia (74 calorias por 100g) = 111 calorias
+110g de tangerine (53 calorias por 100g) = 58 calorias
+120g de bagel (257 calorias por 100g) = 308 calorias
+200g de coffee (1 calorias por 100g) = 2 calorias
+200g de beef fillet (189 calorias por 100g) = 378 calorias
+150g de rigatoni (353 calorias por 100g) = 529 calorias
+100g de banoffee pie (395 calorias por 100g) = 395 calorias
+50g de arugula (25 calorias por 100g) = 12 calorias
+5g de caesar dressing (429 calorias por 100g) = 21 calorias
+30g de camembert (300 calorias por 100g) = 90 calorias
+50g de chocolate (529 calorias por 100g) = 264 calorias
+200g de white wine (82 calorias por 100g) = 164 calorias
 
-Total de 336 calorias consumidas no dia.
+Total de 2332 calorias consumidas no dia.
 
-========  ESTATÍSTICAS ABP  ========
-Número de Nodos: 15
-Altura: 7
-Rotações: 0
-Comparações: 136
-
-
-========  ESTATÍSTICAS AVL  ========
-Número de Nodos: 15
-Altura: 5
-Rotações: 6
-Comparações: 68
-
-
-========  ESTATÍSTICAS RN  ========
-Número de Nodos: 0
-Altura: 0
-Rotações: 0
-Comparações: 0
+========  ESTAT�STICAS ABP ============
+Numero de Nodos: 1000
+Altura: 22
+Rota��es: 0
+Compara��es: 310
 
 
-========  ESTATÍSTICAS Splay  ========
-Número de Nodos: 0
-Altura: 0
-Rotações: 0
-Comparações: 0
-
-
+========  ESTAT�STICAS AVL ============
+Numero de Nodos: 1000
+Altura 12
+Rota��es: 449
+Compara��es: 248
