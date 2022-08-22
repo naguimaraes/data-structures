@@ -1,35 +1,21 @@
 Calorias caluladas para day1.csv usando a tabela 1000Shuffled.csv.
 
-100g de plum juice (71 calorias por 100g) = 71 calorias
-100g de pearl barley (352 calorias por 100g) = 352 calorias
-100g de bran muffins (270 calorias por 100g) = 270 calorias
-100g de barq’s (46 calorias por 100g) = 46 calorias
-100g de mozzarella pizza (249 calorias por 100g) = 249 calorias
-100g de rack of pork (241 calorias por 100g) = 241 calorias
-100g de rosemary (131 calorias por 100g) = 131 calorias
-100g de brownies (405 calorias por 100g) = 405 calorias
-100g de potato fritter (185 calorias por 100g) = 185 calorias
-100g de turkey breast (104 calorias por 100g) = 104 calorias
-100g de oatmeal raisin cookies (435 calorias por 100g) = 435 calorias
 100g de muesli (336 calorias por 100g) = 336 calorias
-100g de cherries (50 calorias por 100g) = 50 calorias
-100g de seafood pizza (245 calorias por 100g) = 245 calorias
-100g de cornbread (179 calorias por 100g) = 179 calorias
 
-Total de 3299 calorias consumidas no dia.
+Total de 336 calorias consumidas no dia.
 
 ========  ESTATÍSTICAS ABP  ========
-Número de Nodos: 0
-Altura: 0
+Número de Nodos: 15
+Altura: 7
 Rotações: 0
-Comparações: 0
+Comparações: 136
 
 
 ========  ESTATÍSTICAS AVL  ========
-Número de Nodos: 0
-Altura: 0
-Rotações: 0
-Comparações: 0
+Número de Nodos: 15
+Altura: 5
+Rotações: 6
+Comparações: 68
 
 
 ========  ESTATÍSTICAS RN  ========
