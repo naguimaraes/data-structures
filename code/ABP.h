@@ -3,26 +3,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "shared.h"
+#include <ctype.h>
+#include <string.h>
+#include "types.h"
 
 typedef struct ABP ABP;
+typedef struct Food Typeinfo;
 
-typedef ABP Tree;
+int insertABP(ABP **root, Typeinfo info, TreeStats *stats);
 
-typedef Alimento Typeinfo;
-
-Tree *createABP(void);
-
-int insertABP(Tree **raiz, Typeinfo info);
-
-int removeABP(Tree **raiz, Typeinfo info);
-
-Tree *searchABP(Tree *raiz, Typeinfo info, int *comp);
-
-int destroiABP(Tree **raiz);
-
-int displayABP(Tree *raiz, int mode);
-
-Tree *consulta(Tree *root, char *key, int *comp);
+int removeABP(ABP **root, Typeinfo info, TreeStats *stats);
 
 #endif
