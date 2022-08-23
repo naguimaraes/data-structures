@@ -20,17 +20,14 @@ int insertABP(ABP **root, Typeinfo info, TreeStats *stats)
         (*root)->info = info; // Insere o valor na raiz
         (*root)->L = NULL;    // Insere NULL na esquerda
         (*root)->R = NULL;    // Insere NULL na direita
-        addCounterInt(stats, 4, 1);
         return 1;
     }
     else if (strcmp((*root)->info.name, info.name) > 0)
     {
-        addCounterInt(stats, 4, 1);
         return insertABP(&((*root)->L), info, stats); // Insere na esquerda
     }
     else if (strcmp((*root)->info.name, info.name) < 0)
     {
-        addCounterInt(stats, 4, 1);
         return insertABP(&((*root)->R), info, stats); // Insere na direita
     }
     else
