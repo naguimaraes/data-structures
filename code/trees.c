@@ -27,20 +27,8 @@ void *searchTree(void *inputTree, Typeinfo info, TreeStats *stats)
         return root; // Retorna a raiz para indicar que o valor existe na arvore
     }
 
-    if (strcmp(root->info.name, info.name) > 0)
-    {
-        addCounterInt(stats, 4, 1);
-        return searchTree(root->L, info, stats); // Busca na esquerda
-    }
-    else if (strcmp(root->info.name, info.name) < 0)
-    {
-        addCounterInt(stats, 4, 1);
-        return searchTree(root->R, info, stats); // Busca na direita
-    }
-    else
-    {
-        return NULL; // Retorna NULL para indicar que o valor nao existe na arvore
-    }
+    addCounterInt(stats, 4, 1);
+    return strcmp(root->info.name,info.name) > 0 ? searchTree(root->L, info, stats) : searchTree(root->R, info, stats); // Busca o valor na arvore
 }
 
 void printTree(Tree *root, int level)
