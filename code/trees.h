@@ -34,4 +34,6 @@ int heightTree(void *inputTree);
 
 void updateTreeCounter(TreeStats *counter, void *tree);
 
+void *consulta(void *inputTree, Typeinfo info, TreeStats *stats);
+
 #endif

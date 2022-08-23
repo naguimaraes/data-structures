@@ -12,8 +12,6 @@ void *createTree(void)
     return NULL;
 }
 
-#pragma GCC diagnostic push // Ignores the following warnings
-#pragma GCC diagnostic ignored "-Wunused-value"
 void *searchTree(void *inputTree, Typeinfo info, TreeStats *stats)
 {
     Tree *root = (Tree *)inputTree;
@@ -22,7 +20,6 @@ void *searchTree(void *inputTree, Typeinfo info, TreeStats *stats)
         addCounterInt(stats, 4, 1);
         return NULL; // Retorna NULL para indicar que o valor nao existe na arvore
     }
-    
 
     if (!strcmp(root->info.name, info.name))
     {
@@ -45,7 +42,6 @@ void *searchTree(void *inputTree, Typeinfo info, TreeStats *stats)
         return NULL; // Retorna NULL para indicar que o valor nao existe na arvore
     }
 }
-#pragma GCC diagnostic pop // Stop Ignoring the following warnings
 
 void printTree(Tree *root, int level)
 {
@@ -180,7 +176,7 @@ void *destroyTree(void *inputTree)
 {
     if (inputTree == NULL)
     {
-        return inputTree;           // Retorna a arvore para indicar que nao existe nenhuma arvore para destruir
+        return inputTree; // Retorna a arvore para indicar que nao existe nenhuma arvore para destruir
     }
 
     Tree *root = (Tree *)inputTree; // Converte o ponteiro para arvore
@@ -203,7 +199,7 @@ int numberNodes(void *inputTree)
     {
         return 0; // Retorna 0 para indicar que nao existe nenhum valor na arvore
     }
-    Tree *root = (Tree *)inputTree; // Converte o ponteiro para arvore
+    Tree *root = (Tree *)inputTree;                         // Converte o ponteiro para arvore
     return 1 + numberNodes(root->L) + numberNodes(root->R); // Retorna o numero de nos da arvore
 }
 
@@ -214,35 +210,47 @@ int heightTree(void *inputTree)
         return 0; // Retorna 0 para indicar que nao existe nenhum valor na arvore
     }
 
-    Tree *root = (Tree *)inputTree; // Converte o ponteiro para arvore
-    int left = heightTree(root->L);  // Calcula a altura da arvore da esquerda
-    int right = heightTree(root->R); // Calcula a altura da arvore da direita
+    Tree *root = (Tree *)inputTree;             // Converte o ponteiro para arvore
+    int left = heightTree(root->L);             // Calcula a altura da arvore da esquerda
+    int right = heightTree(root->R);            // Calcula a altura da arvore da direita
     return 1 + ((left > right) ? left : right); // Retorna a altura da arvore
 }
 
-void updateTreeCounter(TreeStats * counter, void *tree)
+void updateTreeCounter(TreeStats *counter, void *tree)
 {
     addCounterInt(counter, 1, numberNodes(tree)); // Adiciona o numero de nos da arvore
     addCounterInt(counter, 2, heightTree(tree));  // Adiciona a altura da arvore
 }
-// Tree *consulta(Tree *root, char *key, int *comp)
-    // {
-    //     while (root != NULL)
-    //     {
-    //         *comp++;
-    //         if (!strcmp(root->info.name, key))
-    //         {
-    //             *comp++;
-    //             return root;
-    //         }
-    //         else
-    //         {
-    //             *comp++;
-    //             if (strcmp(root->info.name, key) > 0)
-    //                 root = root->L;
-    //             else
-    //                 root = root->R;
-    //         }
-    //     }
-    //     return NULL;
-    // }
+
+Tree *_consulta(Tree *root, char *key, int *comp)
+{
+    while (root != NULL)
+    {
+        (*comp)++;
+        if (!strcmp(root->info.name, key))
+        {
+            (*comp)++;
+            return root;
+        }
+        else
+        {
+            (*comp)++;
+            if (strcmp(root->info.name, key) > 0)
+                root = root->L;
+            else
+                root = root->R;
+        }
+    }
+    return NULL;
+}
+
+void *consulta(void *inputTree, Typeinfo info, TreeStats *stats)
+{
+    Tree *root = (Tree *)inputTree; // Converte o ponteiro para arvore
+    if (root == NULL)
+    {
+        return NULL; // Retorna NULL para indicar que nao existe nenhum valor na arvore
+    }
+    root = _consulta(root, info.name, getCounterIntPointer(stats, 4)); // Chama a função recursiva
+    return root;
+}
