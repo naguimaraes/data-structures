@@ -55,7 +55,7 @@ char *printStatistics(TreeStats stats)
     int height = getCounterInt(&stats, 2);
     int rotations = getCounterInt(&stats, 3);
     int comparasions = getCounterInt(&stats, 4);
-    sprintf(output, "========  ESTATÍSTICAS %s ============\nNumero de Nodos: %d\nAltura: %d\nRotações: %d\nComparações: %d\n\n", getCounterName(&stats), numNodes, height, rotations, comparasions);
+    sprintf(output, "========  ESTATÍSTICAS %s ============\nNumero de Nodos: %d\nAltura: %d\nRotações: %d\nComparações: %d\n", getCounterName(&stats), numNodes, height, rotations, comparasions);
     return output; // Retorna a string de saida
 }
 
@@ -112,12 +112,12 @@ void deletOutput(Outputs *output)
 
     TreeStats ABP = *getTreeStats(output, 1); // Pega as estatisticas da arvore
     char *outputString = printStatistics(ABP); // Pega a string de saida do ABP
-    fprintf(file, "%s\n", outputString);       // Escreve a string de saida no arquivo de saida
+    fprintf(file, "%s\n\n", outputString);       // Escreve a string de saida no arquivo de saida
     free(outputString);                        // Libera a memoria alocada para a string de saida
 
     TreeStats AVL = *getTreeStats(output, 2); // Pega as estatisticas da arvore
     outputString = printStatistics(AVL);   // Pega a string de saida do AVL
-    fprintf(file, "%s\n", outputString);         // Escreve a string de saida no arquivo de saida
+    fprintf(file, "%s", outputString);         // Escreve a string de saida no arquivo de saida
     free(outputString);                          // Libera a memoria alocada para a string de saida
 
     // TreeStats RN = *getTreeStats(output, 3);  // Pega as estatisticas da arvore
