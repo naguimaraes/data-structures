@@ -6,12 +6,9 @@
 #include "types.h"
 #include "trees.h"
 
+typedef struct AVL AVL;
 typedef Food Typeinfo;
 
-typedef struct AVL AVL;
-
 int insertAVL(AVL **root, Typeinfo info, TreeStats *stats);
-
-int removeAVL(AVL **root, Typeinfo info, TreeStats *stats);
 
 #endif // AVL_H_

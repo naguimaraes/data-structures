@@ -3,9 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
 #include "types.h"
+#include "trees.h"
 
 typedef struct ABP ABP;
 typedef struct Food Typeinfo;
