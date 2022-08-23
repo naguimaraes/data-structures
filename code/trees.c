@@ -15,9 +15,9 @@ void *createTree(void)
 void *searchTree(void *inputTree, Typeinfo info, TreeStats *stats)
 {
     Tree *root = (Tree *)inputTree;
+    addCounterInt(stats, 4, 1);
     if (root == NULL)
     {
-        addCounterInt(stats, 4, 1);
         return NULL; // Retorna NULL para indicar que o valor nao existe na arvore
     }
 
