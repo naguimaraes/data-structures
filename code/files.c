@@ -122,12 +122,12 @@ void deletOutput(Outputs *output)
 
     // TreeStats RN = *getTreeStats(output, 3);  // Pega as estatisticas da arvore
     // outputString = printStatistics(RN); // Pega a string de saida do RN
-    // fprintf(file, "%s\n", outputString);        // Escreve a string de saida no arquivo de saida
+    // fprintf(file, "%s\n\n", outputString);        // Escreve a string de saida no arquivo de saida
     // free(outputString);                         // Libera a memoria alocada para a string de saida
 
     // TreeStats Splay = *getTreeStats(output, 4); // Pega as estatisticas da arvore
     // outputString = printStatistics(Splay); // Pega a string de saida do Splay
-    // fprintf(file, "%s\n", outputString);           // Escreve a string de saida no arquivo de saida
+    // fprintf(file, "%s", outputString);           // Escreve a string de saida no arquivo de saida
     // free(outputString);                            // Libera a memoria alocada para a string de saida
 
     fclose(getFilePointer(output, 1));      // Fecha o arquivo de alimentos
