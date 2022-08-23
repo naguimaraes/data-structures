@@ -35,7 +35,7 @@ char *getOutputString(Food alimento, Food ingerido)
     {
         return NULL; // Retorna NULL se nao conseguir alocar memoria
     }
-    sprintf(output, "%dg de %s (%d calorias por 100g) = %.0f calorias", ingerido.calories, alimento.name, alimento.calories, calsIngested(alimento, ingerido)); // Formata a string de saida
+    sprintf(output, "%dg de %s (%d calorias por 100g) = %d calorias", ingerido.calories, alimento.name, alimento.calories, calsIngested(alimento, ingerido)); // Formata a string de saida
     return output;                                                                                                                                                                       // Retorna a string de saida
 }
 
@@ -50,7 +50,7 @@ char *printStatistics(TreeStats stats)
     int height = getCounterInt(&stats, 2);
     int rotations = getCounterInt(&stats, 3);
     int comparasions = getCounterInt(&stats, 4);
-    sprintf(output, "========  ESTATÍSTICAS %s  ========\nNúmero de Nodos: %d\nAltura: %d\nRotações: %d\nComparações: %d\n\n", getCounterName(&stats), numNodes, height, rotations, comparasions);
+    sprintf(output, "========  ESTATÍSTICAS %s ============\nNumero de Nodos: %d\nAltura: %d\nRotações: %d\nComparações: %d\n\n", getCounterName(&stats), numNodes, height, rotations, comparasions);
     return output; // Retorna a string de saida
 }
 
@@ -85,7 +85,7 @@ Outputs initOutput(int argc, char *argv[])
     }
     //! FINAL DOS CASOS DE ERRO
 
-    fprintf(outputFile, "Calorias caluladas para %s usando a tabela %s.\n\n", argv[2], argv[1]); // Escreve o cabecalho do arquivo de saida
+    fprintf(outputFile, "Calorias calculadas para %s usando a tabela %s.\n\n", argv[2], argv[1]); // Escreve o cabecalho do arquivo de saida
 
     setFilePointer(&output, 1, foodFile); // Move o ponteiro do arquivo de alimentos para o primeiro alimento
     setFilePointer(&output, 2, dayFile); // Move o ponteiro do arquivo de dias para o primeiro dia
