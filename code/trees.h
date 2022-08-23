@@ -24,7 +24,7 @@ void *searchTree(void *inputTree, Typeinfo info, TreeStats *stats);
 int displayTree(void *inputTree, int mode);
 
 // Destroys the tree completely
-void *destroyTree(void *inputTree);
+void deletTree(void *inputTree);
 
 Typeinfo getInfo(void *root);
 

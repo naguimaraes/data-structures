@@ -172,19 +172,19 @@ int displayTree(void *inputTree, int mode)
     return 1; // Retorna 1 para indicar que foi possivel imprimir todos os valores da arvore
 }
 
-void *destroyTree(void *inputTree)
+void deletTree(void *inputTree)
 {
-    if (inputTree == NULL)
+    Tree **root = (Tree **)inputTree; // Converte o ponteiro para arvore
+    
+    if (*root == NULL)
     {
-        return inputTree; // Retorna a arvore para indicar que nao existe nenhuma arvore para destruir
+        return; // Retorna a arvore para indicar que nao existe nenhuma arvore para destruir
     }
 
-    Tree *root = (Tree *)inputTree; // Converte o ponteiro para arvore
-    root->L = destroyTree(root->L); // Destroi a arvore da esquerda
-    root->R = destroyTree(root->R); // Destroi a arvore da direita
-    free(root);                     // Libera a memoria da raiz
-    root = NULL;                    // Seta a raiz para NULL
-    return root;                    // Retorna NULL para indicar que foi possivel destruir a arvore
+    deletTree(&((*root)->L)); // Destroi a arvore da esquerda
+    deletTree(&((*root)->R)); // Destroi a arvore da direita
+    free(*root);                     // Libera a memoria da raiz
+    *root = NULL;                    // Seta a raiz para NULL
 }
 
 Typeinfo getInfo(void *inputNode)
