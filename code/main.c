@@ -43,15 +43,7 @@ int main(int argc, char *argv[])
         // insertSplay(&Splaytree, food, statsSplay); // Insere o alimento na arvore Splay
     }
 
-    displayTree(ABPtree, 1); // Exibe a arvore ABP
-    printf("\n\n");
-    displayTree(AVLtree, 1); // Exibe a arvore AVL
-    printf("\n\n");
-    // displayTree(RNtree, 1); // Exibe a arvore RN
-    // displayTree(Splaytree, 1); // Exibe a arvore Splay
-
     Food ingested; // Cria o alimento que será ingerido
-
     while (!getFoodFromFile(&ingested, getFilePointer(&output, 2)))
     {
         ABP *nodeABP = searchTree(ABPtree, ingested, statsABP); // Busca o alimento na arvore ABP
@@ -76,8 +68,8 @@ int main(int argc, char *argv[])
     // updateTreeCounter(statsRN, RNtree); // Atualiza as estatisticas do RN
     // updateTreeCounter(statsSplay, Splaytree); // Atualiza as estatisticas do Splay
 
-    ABPtree = destroyTree(ABPtree); // Destroi a arvore ABP
-    AVLtree = destroyTree(AVLtree); // Destroi a arvore AVL
+    deletTree(&ABPtree); // Destroi a arvore ABP
+    deletTree(&AVLtree); // Destroi a arvore AVL
     // RNtree = destroyTree(RNtree); // Destroi a arvore RN
     // Splaytree = destroyTree(Splaytree); // Destroi a arvore Splay
 
