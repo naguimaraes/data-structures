@@ -89,7 +89,7 @@ AVL *Case1(AVL *root, TreeStats *stats, int *ok)
     }
     else
     {
-        addCounterInt(stats, 3, 2);
+        addCounterInt(stats, 3, 1);
         root = dRotateoR(root);
     }
     root->k = 0;
@@ -107,7 +107,7 @@ AVL *Case2(AVL *root, TreeStats *stats, int *ok)
     }
     else
     {
-        addCounterInt(stats, 3, 2);
+        addCounterInt(stats, 3, 1);
         root = dRotateL(root);
     }
     root->k = 0;
