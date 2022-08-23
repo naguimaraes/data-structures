@@ -1,7 +1,5 @@
 #include "AVL.h"
 
-typedef Food Typeinfo;
-
 typedef struct AVL
 {
     Typeinfo info;
