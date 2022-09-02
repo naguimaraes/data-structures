@@ -33,14 +33,14 @@ int getFoodFromFile(Food *food, FILE *file)
     return 0; // Retorna 0 se nao houver erros
 }
 
-char *getOutputString(Food alimento, int ingerido)
+char *getOutputString(Food alimento, Food ingerido)
 {
     char *output = (char *)malloc(sizeof(char) * 100); // Aloca memoria para a string de saida
     if (output == NULL)
     {
         return NULL; // Retorna NULL se nao conseguir alocar memoria
     }
-    sprintf(output, "%dg de %s (%d calorias por 100g) = %d calorias", ingerido, alimento.name, alimento.calories, calsIngested(alimento, ingerido)); // Formata a string de saida
+    sprintf(output, "%dg de %s (%d calorias por 100g) = %d calorias", ingerido.calories, alimento.name, alimento.calories, calsIngested(alimento, ingerido)); // Formata a string de saida
     return output;                                                                                                                                                                       // Retorna a string de saida
 }
 

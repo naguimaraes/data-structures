@@ -11,7 +11,7 @@
 int getFoodFromFile(Food *food, FILE *file);
 
 // Return the pointer to the allocated string with the output string, returns NULL if error
-char *getOutputString(Food alimento, int ingerido);
+char *getOutputString(Food alimento, Food ingerido);
 
 // Return the pointer to the allocated string with the statistics, returns NULL if error
 char *printStatistics(TreeStats stats);

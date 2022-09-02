@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <limits.h>
-
+ 
 #include "files.h" // Functions to write the files
 #include "types.h" // Structs and functions for structs
 #include "trees.h" // Shared function between tress
@@ -49,30 +49,24 @@ int main(int argc, char *argv[])
     }
     printf("\nFood file read!\n");
 
+    Food ingested; // Cria o alimento que será ingerido
     printf("\nReading ingested food file and comparing...\n");
-    for (char ingested[100], *x = fgets(ingested, 100, getFilePointer(&output, 2)); x != NULL; x = fgets(ingested, 100, getFilePointer(&output, 2)))
+    while (!getFoodFromFile(&ingested, getFilePointer(&output, 2)))
     {
-        if (strchr(ingested, ';') != NULL)
+        ABP *nodeABP = searchTree(ABPtree, ingested, statsABP); // Busca o alimento na arvore ABP
+        AVL *nodeAVL = searchTree(AVLtree, ingested, statsAVL); // Busca o alimento na arvore AVL
+        // RN *nodeRN = searchTree(RNtree, ingested, statsRN); // Busca o alimento na arvore RN
+        // Splay *nodeSplay = searchTree(Splaytree, ingested, statsSplay); // Busca o alimento na arvore Splay
+
+        if (nodeABP != NULL && nodeAVL != NULL /*&& nodeRN != NULL && nodeSplay != NULL */)
         {
-            strtok(ingested, ";"); // Remove o ; do nome do alimento
-            for (int i = 0; i < strlen(ingested); i++) ingested[i] = tolower(ingested[i]); // Converte o nome do alimento para minusculo
-            ABP *nodeABP = searchTree(ABPtree, ingested, statsABP); // Busca o alimento na arvore ABP
-            AVL *nodeAVL = searchTree(AVLtree, ingested, statsAVL); // Busca o alimento na arvore AVL
-            // RN *nodeRN = searchTree(RNtree, ingested, statsRN); // Busca o alimento na arvore RN
-            // Splay *nodeSplay = searchTree(Splaytree, ingested, statsSplay); // Busca o alimento na arvore Splay
-
-            if (nodeABP != NULL && nodeAVL != NULL
-                // && nodeRN != NULL 
-                // && nodeSplay != NULL
-            )
-            {
-                int cals = atoi(strtok(NULL, ";")); // Pega a quantidade de calorias por 100 gramas do alimento
-                addCals(&output, calsIngested(getInfo(nodeABP), cals));
-
-                char *outputString = getOutputString(getInfo(nodeABP), cals); // Pega a string para o output
-                outputStringToFile(outputString, getFilePointer(&output, 3));  // Escreve a string no arquivo de output
-                free(outputString);
-            }
+            Food temp = getInfo(nodeABP); // Pega o alimento da arvore ABP
+            
+            addCals(&output, calsIngested(temp, ingested)); // Adiciona os calorias do alimento ao total de calorias
+            
+            char *outputString = getOutputString(temp, ingested); // Pega a string para o output
+            outputStringToFile(outputString, getFilePointer(&output, 3)); // Escreve a string no arquivo de output
+            free(outputString); // Libera a string
         }
     }
     printf("\nIngested food file read!\n");

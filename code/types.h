@@ -79,6 +79,6 @@ void setFoodName(Food *food, char name[]);
 void setFoodCals(Food *food, int cals);
 
 // Returns how many calories were ingested in a day
-int calsIngested(Food food, int ingested);
+int calsIngested(Food food, Food ingested);
 
 #endif // types_H_

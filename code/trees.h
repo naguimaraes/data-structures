@@ -16,7 +16,7 @@ typedef struct Food Typeinfo;
 void *createTree(void);
 
 // Returns the node of the tree with the right info, NULL if not found
-void *searchTree(void *inputTree, char *info, TreeStats *stats);
+void *searchTree(void *inputTree, Typeinfo info, TreeStats *stats);
 
 // Displays the tree in the terminal, input int determines mode, output int determines if the function was successful
 // 1 - preFixadoE | 2 - preFixadoD | 3 - posFixadoE | 4 - posFixadoD
