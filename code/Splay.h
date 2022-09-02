@@ -9,6 +9,10 @@
 typedef struct Splay Splay;
 typedef struct Food Typeinfo;
 
-int insertSplay(Splay **root, Typeinfo *info, TreeStats *stats);
+int insertSplay(Splay **root, Typeinfo info, TreeStats *stats);
+
+Splay *searchSplay(Splay **inputTree, Typeinfo info, TreeStats *stats);
+
+Splay *RemoveSplay(Splay *root, Typeinfo info, TreeStats *stats);
 
 #endif // SPLAY_H_

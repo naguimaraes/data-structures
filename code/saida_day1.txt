@@ -27,3 +27,10 @@ Numero de Nodos: 1000
 Altura: 12
 Rotações: 449
 Comparações: 248
+
+
+========  ESTATÍSTICAS Splay ============
+Numero de Nodos: 1000
+Altura: 22
+Rotações: 5490
+Comparações: 144

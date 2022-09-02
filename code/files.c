@@ -111,7 +111,7 @@ void deletOutput(Outputs *output)
 
     TreeStats AVL = *getTreeStats(output, 2); // Pega as estatisticas da arvore
     outputString = printStatistics(AVL);   // Pega a string de saida do AVL
-    fprintf(file, "%s", outputString);         // Escreve a string de saida no arquivo de saida
+    fprintf(file, "%s\n\n", outputString);         // Escreve a string de saida no arquivo de saida
     free(outputString);                          // Libera a memoria alocada para a string de saida
 
     // TreeStats RN = *getTreeStats(output, 3);  // Pega as estatisticas da arvore
@@ -119,10 +119,10 @@ void deletOutput(Outputs *output)
     // fprintf(file, "%s\n\n", outputString);        // Escreve a string de saida no arquivo de saida
     // free(outputString);                         // Libera a memoria alocada para a string de saida
 
-    // TreeStats Splay = *getTreeStats(output, 4); // Pega as estatisticas da arvore
-    // outputString = printStatistics(Splay); // Pega a string de saida do Splay
-    // fprintf(file, "%s", outputString);           // Escreve a string de saida no arquivo de saida
-    // free(outputString);                            // Libera a memoria alocada para a string de saida
+    TreeStats Splay = *getTreeStats(output, 4); // Pega as estatisticas da arvore
+    outputString = printStatistics(Splay); // Pega a string de saida do Splay
+    fprintf(file, "%s", outputString);           // Escreve a string de saida no arquivo de saida
+    free(outputString);                            // Libera a memoria alocada para a string de saida
 
     fclose(getFilePointer(output, 1));      // Fecha o arquivo de alimentos
     fclose(getFilePointer(output, 2));      // Fecha o arquivo de dias
