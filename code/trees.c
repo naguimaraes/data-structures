@@ -12,7 +12,7 @@ void *createTree(void)
     return NULL;
 }
 
-void *searchTree(void *inputTree, Typeinfo info, TreeStats *stats)
+void *searchTree(void *inputTree, char *info, TreeStats *stats)
 {
     Tree *root = (Tree *)inputTree;
     addCounterInt(stats, 4, 1);
@@ -21,14 +21,14 @@ void *searchTree(void *inputTree, Typeinfo info, TreeStats *stats)
         return NULL; // Retorna NULL para indicar que o valor nao existe na arvore
     }
 
-    if (!strcmp(root->info.name, info.name))
+    if (!strcmp(root->info.name, info))
     {
         addCounterInt(stats, 4, 1);
         return root; // Retorna a raiz para indicar que o valor existe na arvore
     }
 
     addCounterInt(stats, 4, 1);
-    return strcmp(root->info.name,info.name) > 0 ? searchTree(root->L, info, stats) : searchTree(root->R, info, stats); // Busca o valor na arvore
+    return strcmp(root->info.name,info) > 0 ? searchTree(root->L, info, stats) : searchTree(root->R, info, stats); // Busca o valor na arvore
 }
 
 void printTree(Tree *root, int level)

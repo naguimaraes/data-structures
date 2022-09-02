@@ -105,7 +105,7 @@ void setFoodCals(Food *food, int cals)
     food->calories = cals;
 }
 
-int calsIngested(Food food, Food ingested)
+int calsIngested(Food food, int ingested)
 {
-    return food.calories / (float)100 * ingested.calories;
+    return food.calories / (float)100 * ingested;
 }
