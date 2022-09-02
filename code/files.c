@@ -7,13 +7,8 @@ int getFoodFromFile(Food *food, FILE *file)
         return -1;  // Retorna -1 se algum parametro for nulo
     }
 
-    char *temp = (char *)malloc(sizeof(char) * 100); // Aloca memoria para o nome do alimento
-    if (temp == NULL)
-    {
-        return -1; // Retorna -1 se nao conseguir alocar memoria
-    }
-
-    if (fgets(temp, 100, file) == NULL)
+    char temp[1000]; // Variavel para percorrer o arquivo
+    if (fgets(temp, 1000, file) == NULL)
     {
         food = NULL;        // Inicializa o alimento como nulo
         return 1;           // Retorna 1 se chegar no final do arquivo
@@ -28,7 +23,6 @@ int getFoodFromFile(Food *food, FILE *file)
     strcpy(food->name, temp);                                                               // Copia o nome do alimento para o struct
     for (int i = 0; i < strlen(food->name); i++) food->name[i] = tolower(food->name[i]);    // Converte o nome do alimento para minusculo
     food->calories = atoi(strtok(NULL, ";"));                                               // Pega a quantidade de calorias por 100 gramas do alimento
-    free(temp);                                                                             // Libera a memoria alocada para o nome do alimento
 
     return 0; // Retorna 0 se nao houver erros
 }
