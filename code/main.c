@@ -53,9 +53,9 @@ int main(int argc, char *argv[])
     printf("\nReading ingested food file and comparing...\n");
     while (!getFoodFromFile(&ingested, getFilePointer(&output, 2)))
     {
-        ABP *nodeABP = searchTree(ABPtree, ingested, statsABP); // Busca o alimento na arvore ABP
-        AVL *nodeAVL = searchTree(AVLtree, ingested, statsAVL); // Busca o alimento na arvore AVL
-        RN *nodeRN = searchTree(RNtree, ingested, statsRN); // Busca o alimento na arvore RN
+        ABP *nodeABP = consulta(ABPtree, ingested, statsABP);           // Busca o alimento na arvore ABP
+        AVL *nodeAVL = consulta(AVLtree, ingested, statsAVL);           // Busca o alimento na arvore AVL
+        RN *nodeRN = consulta(RNtree, ingested, statsRN);               // Busca o alimento na arvore RN
         Splay *nodeSplay = searchSplay(&Splaytree, ingested, statsSplay); // Busca o alimento na arvore Splay
 
         if (nodeABP != NULL && nodeAVL != NULL && nodeRN != NULL && nodeSplay != NULL)

@@ -32,11 +32,11 @@ Splay *searchSplay(Splay **inputTree, Typeinfo info, TreeStats *stats)
 
 Splay *Novo(Typeinfo info, Splay *L, Splay *R)
 {
-    Splay *x = (Splay *)malloc(sizeof(Splay));
-    x->info = info;
-    x->L = L;
-    x->R = R;
-    return x;
+    Splay *aux = (Splay *)malloc(sizeof(Splay));
+    aux->info = info;
+    aux->L = L;
+    aux->R = R;
+    return aux;
 };
 
 Splay *Insere(Splay *root, Typeinfo info, TreeStats *stats)

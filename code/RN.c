@@ -209,10 +209,10 @@ RN *_insertRN(RN **root, Typeinfo info, TreeStats *stats)
 
 int insertRN(RN **root, Typeinfo info, TreeStats *stats)
 {
-    RN *newNode = _insertRN(root, info, stats);
-    if (newNode != NULL)
+    RN *new = _insertRN(root, info, stats);
+    if (new != NULL)
     {
-        VerifyRN(root, newNode, stats);
+        VerifyRN(root, new, stats);
 
         return 1;
     }
