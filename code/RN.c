@@ -51,11 +51,11 @@ void sRotateLRN(RN **root, RN *node)
         grandparent = parent->P;
         if (grandparent->R == parent)
         {
-            grandparent->R = node; 
+            grandparent->R = node;
         }
         else
         {
-            grandparent->L = node; 
+            grandparent->L = node;
         }
     }
     else
@@ -142,38 +142,82 @@ void VerifyRN(RN **root, RN *node, TreeStats *stats)
     }
 }
 
-RN *_insertRN(RN *node, RN **root, RN *parent, Typeinfo info, RN **start, TreeStats *stats)
+RN *_insertRN(RN **root, Typeinfo info, TreeStats *stats)
 {
-    if (node == NULL)
+
+    if (*root == NULL)
     {
-        RN *newNode = malloc(sizeof(RN));
-        newNode->P = parent;
-        newNode->info = info;
-        newNode->L = NULL;
-        newNode->R = NULL;
-        newNode->red = (parent == NULL) ? 0 : 1;
-        *start = newNode;
-        return newNode;
+        *root = (RN *)malloc(sizeof(RN)); // Aloca memoria para a raiz
+        if (*root == NULL)
+        {
+            return NULL; // Retorna NULL para indicar que nao foi possivel alocar memoria
+        }
+        (*root)->P = NULL;    // Atribui NULL para o pai da raiz
+        (*root)->info = info; // Insere o valor na raiz
+        (*root)->L = NULL;    // Insere NULL na esquerda
+        (*root)->R = NULL;    // Insere NULL na direita
+        (*root)->red = 0;     // Atribui 0 para a cor da raiz
+        return *root;         // Retorna a raiz
+    }
+    else if (strcmp((*root)->info.name, info.name) > 0)
+    {
+        if ((*root)->L == NULL)
+        {
+            (*root)->L = malloc(sizeof(RN)); // Aloca memoria para o novo no
+            if ((*root)->L == NULL)
+            {
+                return NULL; // Retorna NULL para indicar que nao foi possivel alocar memoria
+            }
+            (*root)->L->P = *root;   // Atribui NULL para o pai do no
+            (*root)->L->info = info; // Insere o valor no no
+            (*root)->L->L = NULL;    // Insere NULL na esquerda
+            (*root)->L->R = NULL;    // Insere NULL na direita
+            (*root)->L->red = 1;     // Atribui 1 para a cor da raiz
+            return (*root)->L;       // Retorna a raiz
+        }
+        else
+        {
+            return _insertRN(&(*root)->L, info, stats);
+        }
+    }
+    else if (strcmp((*root)->info.name, info.name) < 0)
+    {
+        if ((*root)->R == NULL)
+        {
+            (*root)->R = malloc(sizeof(RN));
+            if ((*root)->R == NULL)
+            {
+                return NULL; // Retorna NULL para indicar que nao foi possivel alocar memoria
+            }
+            (*root)->R->P = *root;   // Atribui NULL para o pai do no
+            (*root)->R->info = info; // Insere o valor no no
+            (*root)->R->L = NULL;    // Insere NULL na esquerda
+            (*root)->R->R = NULL;    // Insere NULL na direita
+            (*root)->R->red = 1;     // Atribui 1 para a cor da raiz
+            return (*root)->R;       // Retorna a raiz
+        }
+        else
+        {
+            return _insertRN(&(*root)->R, info, stats); // Chama a funcao recursivamente
+        }
     }
     else
     {
-        if (strcmp(node->info.name, info.name) > 0)
-        {
-            node->L = _insertRN(node->L, root, node, info, start, stats);
-        }
-        else if (strcmp(node->info.name, info.name) < 0)
-        {
-            node->R = _insertRN(node->R, root, node, info, start, stats);
-        }
-
-        return node;
+        return NULL; // Retorna NULL para indicar que o valor ja existe na arvore
     }
 }
 
 int insertRN(RN **root, Typeinfo info, TreeStats *stats)
 {
-    RN *newNode = NULL;
-    *root = _insertRN(*root, root, NULL, info, &newNode, stats);
-    VerifyRN(root, newNode, stats);
-    return 1;
+    RN *newNode = _insertRN(root, info, stats);
+    if (newNode != NULL)
+    {
+        VerifyRN(root, newNode, stats);
+
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
