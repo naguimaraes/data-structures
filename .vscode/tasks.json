@@ -29,7 +29,7 @@
         {
             "type": "cppbuild",
             "label": "gcc build active file windows",
-            "command": "C:\\MinGW\\bin\\gcc.exe",
+            "command": "gcc",
             "args": [
                 "-Wall",
                 "-fdiagnostics-color=always",

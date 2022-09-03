@@ -88,6 +88,7 @@ int main(int argc, char *argv[])
 
     printf("\nProgram finished!\n");
     
+    printf("Press Enter to Exit.");
     getc(stdin);
     return 0;
 }

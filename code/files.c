@@ -60,6 +60,7 @@ Outputs initOutput(int argc, char *argv[])
     if (argc != 4)
     {
         printf("Usage: <program> <food file> <day file> <output file>\n"); // Printa o erro
+        printf("Press Enter to Exit.");
         getc(stdin);                                                      // Pausa o programa
         exit(1);                                                           // Sai do programa
     }
@@ -67,6 +68,7 @@ Outputs initOutput(int argc, char *argv[])
     if (foodFile == NULL)
     {
         printf("Error: Food file not found.\n"); // Printa o erro
+        printf("Press Enter to Exit.");
         getc(stdin);                             // Pausa o programa
         exit(2);                                 // Sai do programa
     }
@@ -75,6 +77,7 @@ Outputs initOutput(int argc, char *argv[])
     if (dayFile == NULL)
     {
         printf("Error: Day file not found.\n");
+        printf("Press Enter to Exit.");
         getc(stdin); // Pausa o programa
         exit(3);
     }
@@ -83,6 +86,7 @@ Outputs initOutput(int argc, char *argv[])
     if (outputFile == NULL)
     {
         printf("Error: Output file not found.\n");
+        printf("Press Enter to Exit.");
         getc(stdin); // Pausa o programa
         exit(4);
     }
