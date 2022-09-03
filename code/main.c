@@ -28,13 +28,13 @@ int main(int argc, char *argv[])
 
     TreeStats *statsABP = getTreeStats(&output, 1);                 // Cria a struct para o contador da arvore ABP
     TreeStats *statsAVL = getTreeStats(&output, 2);                 // Cria a struct para o contador da arvore AVL
-    // TreeStats *statsRN = getTreeStats(&output, 3);               // Cria a struct para o contador da arvore RN
+    TreeStats *statsRN = getTreeStats(&output, 3);               // Cria a struct para o contador da arvore RN
     TreeStats *statsSplay = getTreeStats(&output, 4);            // Cria a struct para o contador da arvore Splay
 
     printf("\nBuilding trees...\n");
     ABP *ABPtree = createTree(); // Cria a arvore ABP
     AVL *AVLtree = createTree(); // Cria a arvore AVL
-    // RN *RNtree = createTree(); // Cria a arvore RN
+    RN *RNtree = createTree(); // Cria a arvore RN
     Splay *Splaytree = createTree(); // Cria a arvore Splay
     printf("\nTrees created!\n");
 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     {
         insertABP(&ABPtree, food, statsABP); // Insere o alimento na arvore ABP
         insertAVL(&AVLtree, food, statsAVL); // Insere o alimento na arvore AVL
-        // insertRN(&RNtree, food, statsRN); // Insere o alimento na arvore RN
+        insertRN(&RNtree, food, statsRN); // Insere o alimento na arvore RN
         insertSplay(&Splaytree, food, statsSplay); // Insere o alimento na arvore Splay
     }
     printf("\nFood file read!\n");
@@ -55,13 +55,10 @@ int main(int argc, char *argv[])
     {
         ABP *nodeABP = searchTree(ABPtree, ingested, statsABP); // Busca o alimento na arvore ABP
         AVL *nodeAVL = searchTree(AVLtree, ingested, statsAVL); // Busca o alimento na arvore AVL
-        // RN *nodeRN = searchTree(RNtree, ingested, statsRN); // Busca o alimento na arvore RN
+        RN *nodeRN = searchTree(RNtree, ingested, statsRN); // Busca o alimento na arvore RN
         Splay *nodeSplay = searchSplay(&Splaytree, ingested, statsSplay); // Busca o alimento na arvore Splay
 
-        if (nodeABP != NULL && nodeAVL != NULL 
-        // && nodeRN != NULL 
-        && nodeSplay != NULL 
-        )
+        if (nodeABP != NULL && nodeAVL != NULL && nodeRN != NULL && nodeSplay != NULL)
         {
             Food temp = getInfo(nodeABP); // Pega o alimento da arvore ABP
             
@@ -77,18 +74,20 @@ int main(int argc, char *argv[])
     printf("\nUpdating tree stats...\n");
     updateTreeCounter(statsABP, ABPtree); // Atualiza as estatisticas do ABP
     updateTreeCounter(statsAVL, AVLtree); // Atualiza as estatisticas do AVL
-    // updateTreeCounter(statsRN, RNtree); // Atualiza as estatisticas do RN
+    updateTreeCounter(statsRN, RNtree); // Atualiza as estatisticas do RN
     updateTreeCounter(statsSplay, Splaytree); // Atualiza as estatisticas do Splay
 
     printf("\nDeleting trees...\n");
     deletTree(&ABPtree); // Destroi a arvore ABP
     deletTree(&AVLtree); // Destroi a arvore AVL
-    // deletTree(&RNtree); // Destroi a arvore RN
+    deletTree(&RNtree); // Destroi a arvore RN
     deletTree(&Splaytree); // Destroi a arvore Splay
 
     printf("\nWriting output file...\n");
     deletOutput(&output); // Finaliza o output do arquivo de saida
 
     printf("\nProgram finished!\n");
+    
+    getc(stdin);
     return 0;
 }

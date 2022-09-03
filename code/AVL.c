@@ -17,7 +17,7 @@ int Factor(AVL *root)
     return heightTree(root->L) - heightTree(root->R);
 }
 
-AVL *sRotateR(AVL *root)
+AVL *sRotateRAVL(AVL *root)
 {
     AVL *temp = root->L;
     root->L = temp->R;
@@ -27,7 +27,7 @@ AVL *sRotateR(AVL *root)
     return root;
 }
 
-AVL *sRotateL(AVL *root)
+AVL *sRotateLAVL(AVL *root)
 {
     AVL *temp = root->R;
     root->R = temp->L;
@@ -83,7 +83,7 @@ AVL *Case1(AVL *root, TreeStats *stats, int *ok)
     if (temp->k == 1)
     {
         addCounterInt(stats, 3, 1);
-        root = sRotateR(root);
+        root = sRotateRAVL(root);
     }
     else
     {
@@ -101,7 +101,7 @@ AVL *Case2(AVL *root, TreeStats *stats, int *ok)
     if (temp->k == -1)
     {
         addCounterInt(stats, 3, 1);
-        root = sRotateL(root);
+        root = sRotateLAVL(root);
     }
     else
     {

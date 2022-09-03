@@ -60,12 +60,14 @@ Outputs initOutput(int argc, char *argv[])
     if (argc != 4)
     {
         printf("Usage: <program> <food file> <day file> <output file>\n"); // Printa o erro
+        getc(stdin);                                                      // Pausa o programa
         exit(1);                                                           // Sai do programa
     }
     FILE *foodFile = fopen(argv[1], "r"); // Abre o arquivo de alimentos
     if (foodFile == NULL)
     {
         printf("Error: Food file not found.\n"); // Printa o erro
+        getc(stdin);                             // Pausa o programa
         exit(2);                                 // Sai do programa
     }
 
@@ -73,6 +75,7 @@ Outputs initOutput(int argc, char *argv[])
     if (dayFile == NULL)
     {
         printf("Error: Day file not found.\n");
+        getc(stdin); // Pausa o programa
         exit(3);
     }
 
@@ -80,6 +83,7 @@ Outputs initOutput(int argc, char *argv[])
     if (outputFile == NULL)
     {
         printf("Error: Output file not found.\n");
+        getc(stdin); // Pausa o programa
         exit(4);
     }
     //! FINAL DOS CASOS DE ERRO
@@ -114,10 +118,10 @@ void deletOutput(Outputs *output)
     fprintf(file, "%s\n\n", outputString);         // Escreve a string de saida no arquivo de saida
     free(outputString);                          // Libera a memoria alocada para a string de saida
 
-    // TreeStats RN = *getTreeStats(output, 3);  // Pega as estatisticas da arvore
-    // outputString = printStatistics(RN); // Pega a string de saida do RN
-    // fprintf(file, "%s\n\n", outputString);        // Escreve a string de saida no arquivo de saida
-    // free(outputString);                         // Libera a memoria alocada para a string de saida
+    TreeStats RN = *getTreeStats(output, 3);  // Pega as estatisticas da arvore
+    outputString = printStatistics(RN); // Pega a string de saida do RN
+    fprintf(file, "%s\n\n", outputString);        // Escreve a string de saida no arquivo de saida
+    free(outputString);                         // Libera a memoria alocada para a string de saida
 
     TreeStats Splay = *getTreeStats(output, 4); // Pega as estatisticas da arvore
     outputString = printStatistics(Splay); // Pega a string de saida do Splay

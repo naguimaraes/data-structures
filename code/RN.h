@@ -9,6 +9,6 @@
 typedef struct RN RN;
 typedef struct Food Typeinfo;
 
-int insertRN(RN **root, Typeinfo *info, TreeStats *stats);
+int insertRN(RN **root, Typeinfo info, TreeStats *stats);
 
 #endif // RN_H_

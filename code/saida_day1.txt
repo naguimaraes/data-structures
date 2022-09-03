@@ -29,6 +29,13 @@ Rotações: 449
 Comparações: 248
 
 
+========  ESTATÍSTICAS RN ============
+Numero de Nodos: 1000
+Altura: 12
+Rotações: 380
+Comparações: 234
+
+
 ========  ESTATÍSTICAS Splay ============
 Numero de Nodos: 1000
 Altura: 22
