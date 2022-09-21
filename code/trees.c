@@ -23,11 +23,9 @@ void *searchTree(void *inputTree, Typeinfo info, TreeStats *stats)
 
     if (!strcmp(root->info.name, info.name))
     {
-        addCounterInt(stats, 4, 1);
         return root; // Retorna a raiz para indicar que o valor existe na arvore
     }
 
-    addCounterInt(stats, 4, 1);
     return strcmp(root->info.name,info.name) > 0 ? searchTree(root->L, info, stats) : searchTree(root->R, info, stats); // Busca o valor na arvore
 }
 
@@ -217,12 +215,10 @@ Tree *_consulta(Tree *root, char *key, int *comp)
         (*comp)++;
         if (!strcmp(root->info.name, key))
         {
-            (*comp)++;
             return root;
         }
         else
         {
-            (*comp)++;
             if (strcmp(root->info.name, key) > 0)
                 root = root->L;
             else
