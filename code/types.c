@@ -50,7 +50,7 @@ void addCounterInt(TreeStats *stats, int index, int value)
 
 TreeStats *getTreeStats(Outputs *counters, int index)
 {
-    if (index < 1 || index > 4)
+    if (index < 1 || index > 5)
     {
         return NULL;
     }

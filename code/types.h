@@ -39,7 +39,7 @@ void addCounterInt(TreeStats *stats, int index, int value);
 typedef struct Outputs
 {
     FILE *file[3];      // Arquivos 1 - InputFoods, 2 - InputDays, 3 - OutputFile
-    TreeStats stats[4]; // Contador para as arvores 1 - ABP, 2 - AVL, 3 - RN, 4 - Splay
+    TreeStats stats[5]; // Contador para as arvores 1 - ABP, 2 - AVL, 3 - RN, 4 - Splay, 5 - LSE
     int totalCals;      // Total de calorias ingeridas
 } Outputs;
 

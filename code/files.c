@@ -102,6 +102,7 @@ Outputs initOutput(int argc, char *argv[])
     output.stats[1] = initCounter("AVL");
     output.stats[2] = initCounter("RN");
     output.stats[3] = initCounter("Splay");
+    output.stats[4] = initCounter("LSE");
     output.totalCals = 0;           // Inicializa o total de calorias ingeridas
     return output;                  // Retorna a struct de output
 }
@@ -129,8 +130,13 @@ void deletOutput(Outputs *output)
 
     TreeStats Splay = *getTreeStats(output, 4); // Pega as estatisticas da arvore
     outputString = printStatistics(Splay); // Pega a string de saida do Splay
-    fprintf(file, "%s", outputString);           // Escreve a string de saida no arquivo de saida
+    fprintf(file, "%s\n\n", outputString);           // Escreve a string de saida no arquivo de saida
     free(outputString);                            // Libera a memoria alocada para a string de saida
+
+    TreeStats LSE = *getTreeStats(output, 5); // Pega as estatisticas da arvore
+    outputString = printStatistics(LSE);      // Pega a string de saida da LSE
+    fprintf(file, "%s", outputString);          // Escreve a string de saida no arquivo de saida
+    free(outputString);                         // Libera a memoria alocada para a string de saida
 
     fclose(getFilePointer(output, 1));      // Fecha o arquivo de alimentos
     fclose(getFilePointer(output, 2));      // Fecha o arquivo de dias

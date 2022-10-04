@@ -19,6 +19,7 @@
 #include "AVL.h" // Cria as funções para a arvore AVL
 #include "RN.h" // Cria as funções para a arvore RN
 #include "Splay.h" // Cria as funções para a arvore Splay
+#include "LSE.h" // Cria as funções para a lista simplesmente encadeada
 
 int main(int argc, char *argv[])
 {
@@ -30,12 +31,14 @@ int main(int argc, char *argv[])
     TreeStats *statsAVL = getTreeStats(&output, 2);                 // Cria a struct para o contador da arvore AVL
     TreeStats *statsRN = getTreeStats(&output, 3);               // Cria a struct para o contador da arvore RN
     TreeStats *statsSplay = getTreeStats(&output, 4);            // Cria a struct para o contador da arvore Splay
+    TreeStats *statsLSE = getTreeStats(&output, 5);              // Cria a struct para o contador da arvore LSE
 
     printf("\nBuilding trees...\n");
     ABP *ABPtree = createTree(); // Cria a arvore ABP
     AVL *AVLtree = createTree(); // Cria a arvore AVL
     RN *RNtree = createTree(); // Cria a arvore RN
     Splay *Splaytree = createTree(); // Cria a arvore Splay
+    LSE *LSEtree = createList(); // Cria a lista LSE
     printf("\nTrees created!\n");
 
     Food food;
@@ -46,6 +49,7 @@ int main(int argc, char *argv[])
         insertAVL(&AVLtree, food, statsAVL); // Insere o alimento na arvore AVL
         insertRN(&RNtree, food, statsRN); // Insere o alimento na arvore RN
         insertSplay(&Splaytree, food, statsSplay); // Insere o alimento na arvore Splay
+        insertLSEEnd(&LSEtree, food, statsLSE); // Insere o alimento na lista LSE
     }
     printf("\nFood file read!\n");
 
@@ -57,8 +61,9 @@ int main(int argc, char *argv[])
         AVL *nodeAVL = consulta(AVLtree, ingested, statsAVL);           // Busca o alimento na arvore AVL
         RN *nodeRN = consulta(RNtree, ingested, statsRN);               // Busca o alimento na arvore RN
         Splay *nodeSplay = searchSplay(&Splaytree, ingested, statsSplay); // Busca o alimento na arvore Splay
+        LSE *nodeLSE = searchLSE(LSEtree, ingested, statsLSE);           // Busca o alimento na lista LSE
 
-        if (nodeABP != NULL && nodeAVL != NULL && nodeRN != NULL && nodeSplay != NULL)
+        if (nodeABP != NULL && nodeAVL != NULL && nodeRN != NULL && nodeSplay != NULL && nodeLSE != NULL)
         {
             Food temp = getInfo(nodeABP); // Pega o alimento da arvore ABP
             
@@ -82,6 +87,7 @@ int main(int argc, char *argv[])
     deletTree(&AVLtree); // Destroi a arvore AVL
     deletTree(&RNtree); // Destroi a arvore RN
     deletTree(&Splaytree); // Destroi a arvore Splay
+    deletList(&LSEtree); // Destroi a lista LSE
 
     printf("\nWriting output file...\n");
     deletOutput(&output); // Finaliza o output do arquivo de saida

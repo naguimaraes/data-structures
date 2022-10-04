@@ -19,21 +19,21 @@ Total de 2332 calorias consumidas no dia.
 Numero de Nodos: 1000
 Altura: 22
 Rotações: 0
-Comparações: 310
+Comparações: 144
 
 
 ========  ESTATÍSTICAS AVL ============
 Numero de Nodos: 1000
 Altura: 12
 Rotações: 449
-Comparações: 248
+Comparações: 114
 
 
 ========  ESTATÍSTICAS RN ============
 Numero de Nodos: 1000
 Altura: 12
 Rotações: 380
-Comparações: 234
+Comparações: 117
 
 
 ========  ESTATÍSTICAS Splay ============
@@ -41,3 +41,10 @@ Numero de Nodos: 1000
 Altura: 22
 Rotações: 5490
 Comparações: 144
+
+
+========  ESTATÍSTICAS LSE ============
+Numero de Nodos: 1000
+Altura: 0
+Rotações: 0
+Comparações: 6370
