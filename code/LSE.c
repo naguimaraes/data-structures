@@ -1,7 +1,3 @@
-/* Ian Kersz - Cartão UFRGS: 00338368
-Implementação das funções utilizadas no trabalho para a LSE.
-*/
-
 #include "LSE.h"
 
 struct LSE

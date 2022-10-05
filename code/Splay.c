@@ -7,15 +7,15 @@ typedef struct Splay
     struct Splay *R;
 } Splay;
 
-Splay *Novo(Typeinfo info, Splay *L, Splay *R);
-Splay *Insere(Splay *root, Typeinfo info, TreeStats *stats);
-Splay *SplayFun(Splay *root, Typeinfo info, TreeStats *stats);
-Splay *Consulta(Splay *root, Typeinfo info, TreeStats *stats);
+Splay *Novo(Typeinfo info, Splay *L, Splay *R); // Função para criar um novo nó
+Splay *Insere(Splay *root, Typeinfo info, TreeStats *stats); // Função para inserir um nó na arvore
+Splay *SplayFun(Splay *root, Typeinfo info, TreeStats *stats); // Função para fazer o splay
+Splay *Consulta(Splay *root, Typeinfo info, TreeStats *stats); // Função para consultar um nó na arvore
 
 // Fun��es Auxiliares
-Splay *RotL(Splay *root);
-Splay *RotR(Splay *root);
-Splay *ConsultaSplay(Splay *root, Typeinfo info, TreeStats *stats); // Auxiliar do Inserem, al�m de fazer o Splay Insere o elemento.
+Splay *RotL(Splay *root); // Função para fazer uma rotação para a esquerda
+Splay *RotR(Splay *root); // Função para fazer uma rotação para a direita
+Splay *ConsultaSplay(Splay *root, Typeinfo info, TreeStats *stats); // Função para consultar um nó na arvore
 
 int insertSplay(Splay **root, Typeinfo info, TreeStats *stats)
 {
@@ -59,7 +59,7 @@ Splay *RemoveSplay(Splay *root, Typeinfo info, TreeStats *stats)
         return NULL;
     root = Consulta(root, info, stats);
     if (strcmp(info.name, root->info.name) == 0)
-    { /* achou */
+    {
         if (root->L == NULL)
         {
             aux = root->R;
@@ -72,7 +72,7 @@ Splay *RemoveSplay(Splay *root, Typeinfo info, TreeStats *stats)
         free(root);
         return aux;
     }
-    return root; /* It wasn't there */
+    return root;
 };
 
 Splay *SplayFun(Splay *root, Typeinfo info, TreeStats *stats)

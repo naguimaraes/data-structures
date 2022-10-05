@@ -1,9 +1,5 @@
 #pragma once
 
-/*
-Interface da Lista Simples Encadeada em C e suas funções.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "types.h"

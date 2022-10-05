@@ -2,12 +2,13 @@
 
 typedef struct AVL
 {
-    Typeinfo info;
-    struct AVL *L;
-    struct AVL *R;
-    int k;
+    Typeinfo info; // Informação do nó
+    struct AVL *L; // Ponteiro para o filho da esquerda
+    struct AVL *R; // Ponteiro para o filho da direita
+    int k;        // Fator de balanceamento
 }AVL;
 
+// Função para calcular o fator de balanceamento
 int Factor(AVL *root)
 {
     if (root == NULL)
@@ -17,6 +18,7 @@ int Factor(AVL *root)
     return heightTree(root->L) - heightTree(root->R);
 }
 
+// Função para rotacionar a arvore para a direita
 AVL *sRotateRAVL(AVL *root)
 {
     AVL *temp = root->L;
@@ -27,6 +29,7 @@ AVL *sRotateRAVL(AVL *root)
     return root;
 }
 
+// Função para rotacionar a arvore para a esquerda
 AVL *sRotateLAVL(AVL *root)
 {
     AVL *temp = root->R;
@@ -37,6 +40,7 @@ AVL *sRotateLAVL(AVL *root)
     return root;
 }
 
+// Função para rotacionar a arvore para a direita e depois para a esquerda
 AVL *dRotateoR(AVL *root)
 {
     AVL *temp = root->L;
@@ -57,6 +61,7 @@ AVL *dRotateoR(AVL *root)
     return root;
 }
 
+// Função para rotacionar a arvore para a esquerda e depois para a direita
 AVL *dRotateL(AVL *root)
 {
     AVL *temp = root->R;
@@ -113,6 +118,7 @@ AVL *Case2(AVL *root, TreeStats *stats, int *ok)
     return root;
 }
 
+// Função para inserir um elemento na arvore
 AVL *_insertAVL(AVL *root, Typeinfo info, TreeStats *stats, int *ok)
 {
     if (root == NULL)
@@ -167,6 +173,7 @@ AVL *_insertAVL(AVL *root, Typeinfo info, TreeStats *stats, int *ok)
     return root;
 }
 
+// Função publica para inserir um elemento na arvore
 int insertAVL(AVL **root, Typeinfo info, TreeStats *stats)
 {
     int ok = 0;

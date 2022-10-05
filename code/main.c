@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 
         if (nodeABP != NULL && nodeAVL != NULL && nodeRN != NULL && nodeSplay != NULL && nodeLSE != NULL)
         {
-            Food temp = getInfo(nodeABP); // Pega o alimento da arvore ABP
+            Food temp = getInfo(nodeABP); // Pega o alimento da arvore ABP, como todos encontraram, todos os "alimentos" são iguais
             
             addCals(&output, calsIngested(temp, ingested)); // Adiciona os calorias do alimento ao total de calorias
             

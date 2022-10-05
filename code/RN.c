@@ -2,13 +2,14 @@
 
 typedef struct RN
 {
-    Typeinfo info;
-    struct RN *L;
-    struct RN *R;
-    struct RN *P;
-    int red;
+    Typeinfo info; // Informação do nó
+    struct RN *L; // Ponteiro para o filho da esquerda
+    struct RN *R; // Ponteiro para o filho da direita
+    struct RN *P; // Ponteiro para o pai
+    int red;     // 1 se o nó for vermelho, 0 se for preto
 } RN;
 
+// Função para rotacionar a arvore para a direita
 void sRotateRRN(RN **root, RN *node)
 {
     RN *parent = node->P;
@@ -41,6 +42,7 @@ void sRotateRRN(RN **root, RN *node)
     parent->L = right;
 }
 
+// Função para rotacionar a arvore para a esquerda
 void sRotateLRN(RN **root, RN *node)
 {
     RN *parent = node->P;
@@ -72,6 +74,7 @@ void sRotateLRN(RN **root, RN *node)
     node->L = parent;
 }
 
+// Função que verifica se a arvore está na forma de RN, se não, modifica ela até ficar
 void VerifyRN(RN **root, RN *node, TreeStats *stats)
 {
     if (node != NULL && node->P != NULL && node->P->P != NULL)
@@ -142,6 +145,7 @@ void VerifyRN(RN **root, RN *node, TreeStats *stats)
     }
 }
 
+// Função para inserir um nó na arvore
 RN *_insertRN(RN **root, Typeinfo info, TreeStats *stats)
 {
 
@@ -207,6 +211,7 @@ RN *_insertRN(RN **root, Typeinfo info, TreeStats *stats)
     }
 }
 
+// Função publica para inserir um nó na arvore
 int insertRN(RN **root, Typeinfo info, TreeStats *stats)
 {
     RN *new = _insertRN(root, info, stats);
