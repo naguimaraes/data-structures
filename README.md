@@ -47,6 +47,7 @@ The project implements five different data structures:
 ├── output/
 │   └── *.txt             # Output files
 ├── data-structures.exe   # Executable after building
+├── LICENSE               # MIT License file
 ├── main.c                # Main program file
 ├── Makefile              # Build configuration
 ├── README.md             # Project documentation
@@ -196,4 +197,6 @@ The project allows comparison of different data structures in terms of:
 
 ## License
 
-This project is part of academic coursework at UFRGS and is intended for educational purposes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+This project was developed as part of academic coursework for the Data Structures course at Universidade Federal do Rio Grande do Sul (UFRGS) and is intended primarily for educational purposes.
