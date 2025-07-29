@@ -1,6 +1,2 @@
+.vscode/
 *.exe
-*
-!/**/
-!*.*
-*.bin
-code/*.exe
