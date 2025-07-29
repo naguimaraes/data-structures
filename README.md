@@ -81,13 +81,13 @@ Here are all available Makefile targets commands:
 To build the project, simply run:
 
 ```bash
-    make
+make
 ```
 
 To build manually, compile the main program with:
 
 ```bash
-    gcc -o bin/data_structures main.c include/*.c structures/*.c -I include
+gcc -o data-structures.exe main.c include/*.c structures/*.c -I include
 ```
 
 ### Running the Program
@@ -113,13 +113,10 @@ make run-sorted
 4. Or run manually with:
 
 ```bash
-./data_structures.exe <food_database.csv> <daily_consumption.csv> <output_file.txt>
-```
+./data-structures.exe <food_database.csv> <daily_consumption.csv> <output_file.txt>
 
-### Example Usage
-
-```bash
-./data_structures.exe code/1000Sorted.csv code/day1.csv output.txt
+# Example Usage
+./data-structures.exe data/1000Sorted.csv data/day1.csv /output/output.txt
 ```
 
 ## Input File Format
